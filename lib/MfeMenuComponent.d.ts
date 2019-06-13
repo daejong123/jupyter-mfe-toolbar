@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import { ToolbarButton } from '@jupyterlab/apputils';
 interface IProps {
     buttons: ToolbarButton[];
+    menuName: string;
 }
 declare class MfeToolBarComponent extends React.Component<IProps, any> {
     constructor(props: IProps);

@@ -13,7 +13,7 @@ export default class MfeMenuWidget extends Widget {
     private toolbarBtns: ToolbarButton[] = [];
     private panel: NotebookPanel;
 
-    constructor(panel: NotebookPanel) {
+    constructor(panel: NotebookPanel, public menuName: string) {
         super();
         this.panel = panel;
         this.id = "mfe-tool-btns"
@@ -45,7 +45,7 @@ export default class MfeMenuWidget extends Widget {
 
     private render() {
         ReactDOM.render(
-            <MfeToolBarComponent buttons={this.toolbarBtns} />
+            <MfeToolBarComponent buttons={this.toolbarBtns} menuName={this.menuName}/>
             , this.node
         );
     }

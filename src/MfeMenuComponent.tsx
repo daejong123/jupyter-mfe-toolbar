@@ -4,7 +4,8 @@ import { Menu, Dropdown, Icon } from 'antd';
 import { ToolbarButton } from '@jupyterlab/apputils';
 
 interface IProps {
-    buttons: ToolbarButton[]
+    buttons: ToolbarButton[],
+    menuName: string
 }
 
 class MfeToolBarComponent extends React.Component<IProps, any> {
@@ -15,6 +16,7 @@ class MfeToolBarComponent extends React.Component<IProps, any> {
 
     render() {
         const buttons: ToolbarButton[] = this.props.buttons;
+        const menuName = this.props.menuName;
         const menu = (
             <Menu>
                 {
@@ -32,7 +34,7 @@ class MfeToolBarComponent extends React.Component<IProps, any> {
             <div>
                 <Dropdown overlay={menu} placement="bottomLeft">
                     <a className="ant-dropdown-link" href="#">
-                        MFE-Tools <Icon type="down" />
+                        {menuName} <Icon type="down" />
                     </a>
                 </Dropdown>
             </div >
