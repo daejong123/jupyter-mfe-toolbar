@@ -24,6 +24,7 @@ export default class MfeMenuWidget extends Widget {
         let w: Widget;
         const iter: any = this.panel.toolbar.children().iter();
         while (w = iter.next()) {
+            console.log(w);
             if (w.id === 'mfe-tool-btns') {
                 console.log('发现mfe-btns已经存在');
                 isExists = true;
