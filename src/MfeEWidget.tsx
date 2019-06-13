@@ -25,12 +25,16 @@ export default class MfeMenuWidget extends Widget {
         const iter: any = this.panel.toolbar.children().iter();
         while (w = iter.next()) {
             if (w.id === 'mfe-tool-btns') {
+                console.log('发现mfe-btns已经存在');
                 isExists = true;
-                (w as MfeMenuWidget).toolbarBtns.push(component);
+                let btns: ToolbarButton[] = (w as MfeMenuWidget).toolbarBtns;
+                btns.push(component);
+                this.toolbarBtns = btns;
                 break;
             }
         }
         if (!isExists) {
+            console.log("未发现mfe-btns")
             this.toolbarBtns.push(component);
             this.panel.toolbar.insertItem(10, 'mfe-tool-button', this);
         }
