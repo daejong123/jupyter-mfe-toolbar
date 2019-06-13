@@ -38,8 +38,8 @@ export default class MfeMenuWidget extends Widget {
         if (!isExists) {
             console.log("未发现mfe-btns")
             this.toolbarBtns.push(component);
-            
-            this.panel.toolbar.insertItem(10, 'mfe-tool-button', this);
+            const time = new Date().getTime();
+            this.panel.toolbar.insertItem(10, 'mfe-tool-button'+time, this);
         }
         this.render()
     }
