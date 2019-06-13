@@ -10,23 +10,23 @@ import {
 
 export default class MfeMenuWidget extends Widget {
 
-    toolbarBtns: ToolbarButton[] = [];
-    panel: NotebookPanel;
+    private toolbarBtns: ToolbarButton[] = [];
+    private panel: NotebookPanel;
 
-    constructor(panel: any) {
+    constructor(panel: NotebookPanel) {
         super();
-        this.panel = panel as NotebookPanel;
+        this.panel = panel;
         this.id = "mfe-tool-btns"
     }
 
-    addBtn(component: any) {
+    public addBtn(component: ToolbarButton) {
         let isExists = false;
         let w: Widget;
         const iter: any = this.panel.toolbar.children().iter();
         while (w = iter.next()) {
             if (w.id === 'mfe-tool-btns') {
                 isExists = true;
-                (w as MfeMenuWidget).toolbarBtns.push(component as ToolbarButton);
+                (w as MfeMenuWidget).toolbarBtns.push(component);
                 break;
             }
         }
@@ -37,7 +37,7 @@ export default class MfeMenuWidget extends Widget {
         this.render()
     }
 
-    render() {
+    private render() {
         ReactDOM.render(
             <MfeToolBarComponent buttons={this.toolbarBtns} />
             , this.node
