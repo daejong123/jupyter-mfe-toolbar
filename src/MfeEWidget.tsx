@@ -16,7 +16,8 @@ export default class MfeMenuWidget extends Widget {
     constructor(panel: NotebookPanel, public menuName: string) {
         super();
         this.panel = panel;
-        this.id = "mfe-tool-btns"
+        const time = new Date().getTime();
+        this.id = "mfe-tool-btns"+time
     }
 
     public addBtn(component: ToolbarButton) {
@@ -25,7 +26,7 @@ export default class MfeMenuWidget extends Widget {
         const iter: any = this.panel.toolbar.children().iter();
         while (w = iter.next()) {
             console.log(w);
-            if (w.id === 'mfe-tool-btns') {
+            if (w.id === this.id) {
                 console.log('发现mfe-btns已经存在');
                 isExists = true;
                 let btns: ToolbarButton[] = (w as MfeMenuWidget).toolbarBtns;
@@ -37,8 +38,8 @@ export default class MfeMenuWidget extends Widget {
         if (!isExists) {
             console.log("未发现mfe-btns")
             this.toolbarBtns.push(component);
-            const time = new Date().getTime();
-            this.panel.toolbar.insertItem(10, 'mfe-tool-button' + time, this);
+            
+            this.panel.toolbar.insertItem(10, 'mfe-tool-button', this);
         }
         this.render()
     }
